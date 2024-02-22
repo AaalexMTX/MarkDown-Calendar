@@ -1,4 +1,5 @@
-#include <iostream>
+﻿#include <iostream>
+#include <cmath>
 using namespace std;
 /*
 zeller(蔡勒)公式 快速算日期对应星期  从1582开始
@@ -10,7 +11,7 @@ ans: 0星期天 5星期五
 
 int days[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-bool is_leap(const int &year)
+int is_leap(const int &year)
 {
     return year % 400 == 0 || year % 4 == 0 && year % 100 != 0;
 }
@@ -36,17 +37,16 @@ int weekOfTheFirstDay(int year, int month, int day = 1)
     year %= 100;
     return (year + year / 4 + c / 4 - 2 * c + 26 * (month + 1) / 10 + day - 1) % 7;
 }
-
-void printCalendar(const int &year, const int &month, int day = 1)
+void printCalendar(const int &y, const int &m, int d = 1)
 {
-    int allDay = dayOfMonth(year, month);         // 该月份总日期
-    int week = weekOfTheFirstDay(year, month, 1); // 起始星期
+    int allDay = dayOfMonth(y, m);                // 该月份总日期
+    int week = weekOfTheFirstDay(y, m, 1);        // 起始星期
     int rowNum = ceil((week - 1 + allDay) / 7.0); // 计算行数28天可能就4行
     cout << "总日期"
          << " 起始星期"
          << " 行数" << endl;
     cout << allDay << "     " << week << "      " << rowNum << endl;
-    printf("%d年%2d月 记事 + 代办\n", year, month);
+    printf("%d年%2d月 记事 + 代办\n", y, m);
     printf("| 一 | 二 | 三 | 四 | 五 | 六 | 日 |\n");
     for (int i = 0; i < 7; ++i)
     {
@@ -60,9 +60,9 @@ void printCalendar(const int &year, const int &month, int day = 1)
         printf("|");
         for (int j = 0; j < 7; j++)
         {
-            if ((i == 0 && j + 1 >= week || i > 0) && day <= allDay)
+            if ((i == 0 && j + 1 >= week || i > 0) && d <= allDay)
             {
-                printf("%2d<br><br>|", day++);
+                printf("%2d<br><br>|", d++);
             }
             else
             {
@@ -81,8 +81,7 @@ void printCalendar(const int &year, const int &month, int day = 1)
             printf(" |\n");
     }
 }
-
-int mian()
+int main()
 {
     int year, month, day, week;
     cout << "input (year month)--> ";

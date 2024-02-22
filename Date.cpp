@@ -1,4 +1,4 @@
-#include "Date.h"
+﻿#include "Date.h"
 
 int days[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
@@ -15,12 +15,12 @@ int Date::dayOfMonth() const
 {
     if (month == 2)
     {
-        return days[month] + isLeap(year);
+        return days[month] + isLeap();
     }
     return days[month];
 }
 
-int Date::weekOfTheFirstDay(int day = 1) const
+int Date::weekOfTheFirstDay(int day) const
 {
     int c = 0;
     int y = year;

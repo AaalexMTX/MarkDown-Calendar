@@ -1,7 +1,7 @@
-#include "Calendar.h"
+﻿#include "Calendar.h"
 using namespace std;
 
-void Calendar::printCalendar(int d = 1) const
+void Calendar::printCalendar(int d) const
 {
     int allDay = targetDate.dayOfMonth();         // 该月份总日期
     int week = targetDate.weekOfTheFirstDay(1);   // 起始星期
@@ -9,7 +9,7 @@ void Calendar::printCalendar(int d = 1) const
 
     cout << "总日期 起始星期 行数" << endl;
     cout << allDay << "     " << week << "      " << rowNum << endl;
-    // printf("%d年%2d月 记事 + 代办\n", y, m);
+    // printf("%d.%2d  Record + Agency\n", y, m);
     printf("| 一 | 二 | 三 | 四 | 五 | 六 | 日 |\n");
     for (int i = 0; i < 7; ++i)
     {

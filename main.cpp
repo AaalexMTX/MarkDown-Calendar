@@ -9,10 +9,11 @@ explain: w星期；c世纪-1；y年（后两位数）m月（m大于等于3，小
 eg: 比如2003年1月1日要看作2002年的13月1日来计算
 ans: 0星期天 5星期五
 */
+
 int main()
 {
-    int year, month, day;
-    cout << "input (year month)--> ";
+    int year, month;
+    cout << "input year month (eg: 2024 2) -- > ";
     cin >> year >> month;
 
     Calendar targetCalendar(year, month);
